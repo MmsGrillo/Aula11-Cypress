@@ -23,3 +23,29 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', (usuario, senha) => {
+    cy.get('#username').type(usuario)    
+    cy.get('#password').type(senha)
+    cy.get('.woocommerce-form > .button').click()
+})
+
+Cypress.Commands.add('cadastro', (email, password, firstName, lastName) => {
+    cy.get('#reg_email').type(email)
+    cy.get('#reg_password').type(password)
+    cy.get(':nth-child(4) > .button').click()
+    cy.get('.woocommerce-MyAccount-navigation-link--edit-account > a').click()    
+    cy.get('#account_first_name').type(firstName)
+    cy.get('#account_last_name').type(lastName)
+    cy.get('.woocommerce-Button').click()
+})
+
+Cypress.Commands.add('addProduto', (produto, tamanho, cor, qtd)=>{
+        cy.get('.products > .row').contains(produto).click()
+        cy.get('.button-variable-item-'+tamanho).click()
+        cy.get('.button-variable-item-'+cor).click()
+        cy.get('.input-text').clear().type(qtd)
+        cy.get('.single_add_to_cart_button').click()
+        cy.get('.woocommerce-message').should('contain', qtd +' × “Abominable Hoodie” foram adicionados no seu carrinho.')
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain',qtd)
+})

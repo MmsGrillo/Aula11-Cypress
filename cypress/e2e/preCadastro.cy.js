@@ -6,11 +6,9 @@ const password = faker.internet.password();
 const firstName = faker.person.firstName();
 const lastName = faker.person.lastName();
 
-
-
 describe('Funcionalidade do pré cadastro', () => {
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta/')
     });
 
     it('Deve passar para página de inicial, logado no cadastro pré criado', () => {
@@ -24,4 +22,9 @@ describe('Funcionalidade do pré cadastro', () => {
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
     });
+
+    it.only('Deve completar o pré-cadastro com sucesse usando comando customizado', () => {
+        cy.cadastro(email, password, firstName, lastName)
+    });
+
 });
