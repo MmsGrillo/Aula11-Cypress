@@ -15,7 +15,7 @@ context('Funcionalidade Login', () =>{
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain','Olá')
     })  
     
-    it.only('Deve fazer Login com sucesso - Usando arquivo de dados', () => {        
+    it('Deve fazer Login com sucesso - Usando arquivo de dados', () => {        
         cy.get('#username').type(perfil.usuario)
         cy.get('#password').type(perfil.senha)
         cy.get('.woocommerce-form > .button').click()
@@ -28,7 +28,7 @@ context('Funcionalidade Login', () =>{
         cy.get('#username').type('aluno_ebac@teste.com-')
         cy.get('#password').type('teste@teste.com')
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-error').should('contain','Erro:')
+        cy.get('.woocommerce-error').should('contain','Endereço de e-mail desconhecido')
     })
 
     it('Deve exibir mensagem de erro ao inserir senha inválido', () =>{
