@@ -35,7 +35,7 @@ describe('Endereços de faturamento e entrega', () => {
         EnderecoPage.editarEnderecoEntrega('Bicho', 'da Goiaba', 'EBAC', 'brasil', 'Av. Paulista', '1010', 'São Paulo', 'sao paulo', '01010101')
     });
 
-    it.only('Deve fazer o cadastro do endereço de entrega com sucesso - Massa de dados', () => {
+    it('Deve fazer o cadastro do endereço de entrega com sucesso - Massa de dados', () => {
         EnderecoPage.editarEnderecoEntrega(
             dadosEndereco[0].nome,
             dadosEndereco[0].sobrenome,
